@@ -1,0 +1,2 @@
+30 04 * * * /root/bin/wincron.sh 2>&1
+30 04 * * * /root/bin/devicescron.sh 2>&1
