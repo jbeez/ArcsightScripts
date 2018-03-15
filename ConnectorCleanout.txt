@@ -1,0 +1,16 @@
+#example of how to cleanout a troubled connector. I recreated whatever was in it in other connectors, then I was able to run this to wipe out the cruft.
+#using connector 3 in this example
+
+/opt/local/monit/bin/monit stop connector_3
+cd /opt/arcsight/connectors/connector_3
+mkdir backup
+mv agentupgrader.log backup
+mv backupagentlauncher.log backup
+mv connectorupgrade.progress.properties backup/
+#this moves all the old versions into a backup folder(all these backup steps can prob be changed to deletions)
+mv 7.* backup/
+rm -rf /opt/arcsight/connectors/connector_3/current/temp/cwsapi_fileset_*
+cd /opt/arcsight/connectors/connector_3/current/logs && rm -rf ThreadDump.* agent.log.* parseraupupgrader.log
+cd /opt/arcsight/connectors/connector_3/current/user/agent && rm -rf upgrade_7.*.log upgrade.properties 3*.xml
+cd /opt/arcsight/connectors/connector_3/user/agent/agentdata/ && rm -rf 3* ps.* TC_*
+cd /opt/arcsight/connectors/ && /opt/local/monit/bin/monit start connector_3
