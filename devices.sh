@@ -1,6 +1,6 @@
 #!/bin/sh
 #create the devices directory under the arcsight web content
-#/root/bin/devices.sh >/opt/arcsight/apswebapps/platform-ui/devices/$(date +%m%d)-$(hostname -s).csv
+#/root/bin/devices.sh >/opt/arcsight/aps/webapps/platform-ui/devices/$(date +%m%d)-$(hostname -s).csv
 #jtbright 01.11.2018 v1.2
 
 c=1
